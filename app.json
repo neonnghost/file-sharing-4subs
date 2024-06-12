@@ -1,10 +1,10 @@
 {
   "name": "File Sharing Premium Bot",
   "description": "Telegram File Sharing Premium Bot Bot ",
-  "logo": "https://graph.org/file/2f461540c83b362772714.jpg",
+  "logo": "https://graph.org/file/c54fdc8a5580bb801abc2.jpg",
   "keywords": ["File Sharing Premium Bot", "Mongo DB"],    
-  "repository": "https://github.com/JishuDeveloper/File-Sharing-Premium-Bot",
-  "success_url": "https://t.me/Madflix_Bots",
+  "repository": "https://github.com/sahildesai07/file-sharing-4subs",
+  "success_url": "https://t.me/ultorid_official",
   "env": {
       "APP_ID": {
           "description": "Your APP ID From my.telegram.org ",
@@ -56,6 +56,19 @@
         "value": "",
         "required": false
       },
+      "SHORTLINK_API":{
+        "description": "Enter yourSHORTLINK_API , add yr shortner api ",
+        "value": "710b7ed8fdc5f89e9036000cc10121921e7732f1"
+      },
+      "IS_VERIFY":{
+        "description": "True= (on)or False = (off) , value = True/False ",
+        "value": "True"
+      },
+      "VERIFY_EXPIRE":{
+        "description": "yr token timeout in seconds, 86400 = 24h",
+        "value": "86400"
+      },
+      
       "DB_URL": {
           "description": "Your Mongo DB Database URL",
           "value": "",
