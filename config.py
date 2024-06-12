@@ -6,9 +6,6 @@ import os
 import logging
 from logging.handlers import RotatingFileHandler
 
-
-
-
 TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "")
 APP_ID = int(os.environ.get("APP_ID", "24955235"))
 API_HASH = os.environ.get("API_HASH", "f317b3f7bbe390346d8b46868cff0de8")
@@ -16,9 +13,8 @@ API_HASH = os.environ.get("API_HASH", "f317b3f7bbe390346d8b46868cff0de8")
 
 OWNER = os.environ.get("OWNER", "PlayTime_Jatin") #Owner username
 OWNER_ID = int(os.environ.get("OWNER_ID", "1837294444")) #Owner user id
-DB_URL = os.environ.get("DB_URL", "mongodb+srv://ultroidxTeam:ultroidxTeam@cluster0.gabxs6m.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-DB_NAME = os.environ.get("DB_NAME", "uxbbot")
-
+DB_URI = os.environ.get("DATABASE_URL", "mongodb+srv://Cluster0:Cluster0@cluster0.c07xkuf.mongodb.net/?retryWrites=true&w=majority")
+DB_NAME = os.environ.get("DATABASE_NAME", "Cluser10")
 
 CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1002004278204")) #database save channel id 
 FORCE_SUB_CHANNEL = int(os.environ.get("FORCE_SUB_CHANNEL", "-1002049574995"))
