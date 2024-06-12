@@ -10,21 +10,21 @@ from logging.handlers import RotatingFileHandler
 
 
 TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "")
-APP_ID = int(os.environ.get("APP_ID", "22505271"))
-API_HASH = os.environ.get("API_HASH", "c89a94fcfda4bc06524d0903977fc81e")
+APP_ID = int(os.environ.get("APP_ID", "24955235"))
+API_HASH = os.environ.get("API_HASH", "f317b3f7bbe390346d8b46868cff0de8")
 
 
 OWNER = os.environ.get("OWNER", "PlayTime_Jatin") #Owner username
-OWNER_ID = int(os.environ.get("OWNER_ID", "6695586027")) #Owner user id
+OWNER_ID = int(os.environ.get("OWNER_ID", "1837294444")) #Owner user id
 DB_URL = os.environ.get("DB_URL", "mongodb+srv://ultroidxTeam:ultroidxTeam@cluster0.gabxs6m.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 DB_NAME = os.environ.get("DB_NAME", "uxbbot")
 
 
-CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1002075726565")) #database id 
-FORCE_SUB_CHANNEL = int(os.environ.get("FORCE_SUB_CHANNEL", "-1002108419450"))
-FORCE_SUB_CHANNEL2 = int(os.environ.get("FORCE_SUB_CHANNEL2", "-1001976541518"))
-FORCE_SUB_CHANNEL3 = int(os.environ.get("FORCE_SUB_CHANNEL3", "-1001982072622"))
-FORCE_SUB_CHANNEL4 = int(os.environ.get("FORCE_SUB_CHANNEL4", "-1002072891392"))
+CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1002004278204")) #database save channel id 
+FORCE_SUB_CHANNEL = int(os.environ.get("FORCE_SUB_CHANNEL", "-1002049574995"))
+FORCE_SUB_CHANNEL2 = int(os.environ.get("FORCE_SUB_CHANNEL2", "-1002097822007"))
+FORCE_SUB_CHANNEL3 = int(os.environ.get("FORCE_SUB_CHANNEL3", "-1002097822007"))
+FORCE_SUB_CHANNEL4 = int(os.environ.get("FORCE_SUB_CHANNEL4", "-1002134495794"))
 
 #Shortner (token system) 
 
@@ -49,7 +49,7 @@ START_MSG = os.environ.get("START_MESSAGE", "Hello {first}\n\nI can store privat
 
 try:
     ADMINS=[6020516635]
-    for x in (os.environ.get("ADMINS", "6020516635 6695586027").split()):
+    for x in (os.environ.get("ADMINS", "6020516635 1837294444 6695586027").split()):
         ADMINS.append(int(x))
 except ValueError:
         raise Exception("Your Admins list does not contain valid integers.")
@@ -57,7 +57,7 @@ except ValueError:
 
 FORCE_MSG = os.environ.get("FORCE_SUB_MESSAGE", "Hello {first}\n\n<b>You need to join in my Channel/Group to use me\n\nKindly Please join Channel</b>")
 
-CUSTOM_CAPTION = os.environ.get("CUSTOM_CAPTION", None)
+CUSTOM_CAPTION = os.environ.get("CUSTOM_CAPTION", None) # remove None and fo this ->: "here come your txt" also with this " " 
 
 PROTECT_CONTENT = True if os.environ.get('PROTECT_CONTENT', "False") == "True" else False
 
