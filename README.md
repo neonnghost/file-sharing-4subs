@@ -25,6 +25,7 @@ File Sharing Token Bot is a Telegram bot designed to store posts and documents, 
 - Access content via special links.
 - Easy to deploy and customize.
 - 4 Force subs
+- add token into this branch
 
 ## 🛠️ Setup
 
