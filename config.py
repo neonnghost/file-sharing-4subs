@@ -26,7 +26,15 @@ FORCE_SUB_CHANNEL2 = int(os.environ.get("FORCE_SUB_CHANNEL2", "-1001976541518"))
 FORCE_SUB_CHANNEL3 = int(os.environ.get("FORCE_SUB_CHANNEL3", "-1001982072622"))
 FORCE_SUB_CHANNEL4 = int(os.environ.get("FORCE_SUB_CHANNEL4", "-1002072891392"))
 
+#Shortner (token system) 
 
+SHORTLINK_URL = os.environ.get("SHORTLINK_URL", "publicearn.com") 
+SHORTLINK_API = os.environ.get("SHORTLINK_API", "b323441bc55ef14be63018992134d393a62a9da9")
+VERIFY_EXPIRE = int(os.environ.get('VERIFY_EXPIRE', 86400)) # Add time in seconds
+IS_VERIFY = os.environ.get("IS_VERIFY", "True")
+TUT_VID = os.environ.get("TUT_VID", "https://t.me/Ultroid_Official/18")
+
+# ignore this one
 SECONDS = int(os.getenv("SECONDS", "200")) # auto delete in seconds
 
 
