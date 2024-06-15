@@ -11,7 +11,7 @@ APP_ID = int(os.environ.get("APP_ID", "24955235"))
 API_HASH = os.environ.get("API_HASH", "f317b3f7bbe390346d8b46868cff0de8")
 
 
-OWNER = os.environ.get("OWNER", "PlayTime_Jatin") #Owner username
+OWNER = os.environ.get("OWNER", "i_am_yamraj") #Owner username
 OWNER_ID = int(os.environ.get("OWNER_ID", "1837294444")) #Owner user id
 DB_URI = os.environ.get("DATABASE_URL", "mongodb+srv://Cluster0:Cluster0@cluster0.c07xkuf.mongodb.net/?retryWrites=true&w=majority")
 DB_NAME = os.environ.get("DATABASE_NAME", "Cluser10")
