@@ -62,7 +62,16 @@ async def start_command(client: Client, message: Message):
             await update_verify_status(id, is_verified=True, verified_time=time.time())
             if verify_status["link"] == "":
                 reply_markup = None
-            await message.reply(f"""🎉 Your token has been successfully verified and is valid for: 16 hours! ⏰ \n\nIf you're facing any issues, feel free to contact @i_am_yamraj 📩""", reply_markup=reply_markup, protect_content=False, quote=True)
+           await message.reply(f"""🚨 Ads token expired! 🚨
+
+Refresh your token and try again. ⏳
+Token Timeout: {get_exp_time(VERIFY_EXPIRE)}
+Pass 1 ad to use the bot for 16 hours.
+Token generation takes 1-2 minutes. 🎥✨
+Need help? Watch our video tutorial! 📹
+Facing issues? Contact @i_am_yamraj 📩
+""", reply_markup=InlineKeyboardMarkup(btn), protect_content=False, quote=True)
+
 
         elif len(message.text) > 7 and verify_status['is_verified']:
             try:
