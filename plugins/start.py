@@ -58,12 +58,11 @@ async def start_command(client: Client, message: Message):
         if "verify_" in message.text:
             _, token = message.text.split("_", 1)
             if verify_status['verify_token'] != token:
-                return await message.reply("Your token is invalid or Expired. Try again by " Click Here to generate token " /start")
+                return await message.reply("Your token is invalid or Expired. Try again by click here to generate the link to generate a new token: /start")
             await update_verify_status(id, is_verified=True, verified_time=time.time())
             if verify_status["link"] == "":
                 reply_markup = None
-            await message.reply(f"🎉 Your token has been successfully verified and is valid for: 16 hours! ⏰ \n\nIf you're facing any issues, feel free to contact @i_am_yamraj 📩
-", reply_markup=reply_markup, protect_content=False, quote=True)
+            await message.reply(f"""🎉 Your token has been successfully verified and is valid for: 16 hours! ⏰ \n\nIf you're facing any issues, feel free to contact @i_am_yamraj 📩""", reply_markup=reply_markup, protect_content=False, quote=True)
 
         elif len(message.text) > 7 and verify_status['is_verified']:
             try:
