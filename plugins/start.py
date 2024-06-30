@@ -31,10 +31,6 @@ from helper_func import subscribed, encode, decode, get_messages, get_shortlink,
 from database.database import add_user, del_user, full_userbase, present_user
 from shortzy import Shortzy
 
-# Initialize your bot instance
-Bot = Client("my_bot", api_id=12345, api_hash="your_api_hash", bot_token="your_bot_token")
-
-
 @Bot.on_message(filters.command('start') & filters.private & subscribed)
 async def start_command(client: Client, message: Message):
     id = message.from_user.id
@@ -60,25 +56,11 @@ async def start_command(client: Client, message: Message):
         if "verify_" in message.text:
             _, token = message.text.split("_", 1)
             if verify_status['verify_token'] != token:
-                return await message.reply("Your token is invalid or Expired. Try again by click here to generate the link to generate a new token: /start")
+                return await message.reply("Your token is invalid or Expired. Try again by clicking /start")
             await update_verify_status(id, is_verified=True, verified_time=time.time())
             if verify_status["link"] == "":
                 reply_markup = None
-
-            await message.reply(
-                f"""🚨 Ads token expired! 🚨
-
-                Refresh your token and try again. ⏳
-                Token Timeout: {get_exp_time(VERIFY_EXPIRE)}
-                Pass 1 ad to use the bot for 16 hours.
-                Token generation takes 1-2 minutes. 🎥✨
-                Need help? Watch our video tutorial! 📹
-                Facing issues? Contact @i_am_yamraj 📩
-                """,
-                reply_markup=InlineKeyboardMarkup(btn),
-                protect_content=False,
-                quote=True
-            )
+            await message.reply(f"Your token successfully verified and valid for: 16 Hour", reply_markup=reply_markup, protect_content=False, quote=True)
 
         elif len(message.text) > 7 and verify_status['is_verified']:
             try:
@@ -115,9 +97,9 @@ async def start_command(client: Client, message: Message):
                 await message.reply_text("Something went wrong..!")
                 return
             await temp_msg.delete()
-
+            
             snt_msgs = []
-
+            
             for msg in messages:
                 if bool(CUSTOM_CAPTION) & bool(msg.document):
                     caption = CUSTOM_CAPTION.format(previouscaption="" if not msg.caption else msg.caption.html, filename=msg.document.file_name)
@@ -170,12 +152,10 @@ async def start_command(client: Client, message: Message):
                     [InlineKeyboardButton("Click here", url=link)],
                     [InlineKeyboardButton('How to use the bot', url=TUT_VID)]
                 ]
-                await message.reply(f"🚨 Ads token expired! 🚨
-
-    \n Refresh your token and try again.\n ⏳ Token Timeout: {get_exp_time(VERIFY_EXPIRE)} \n Pass 1 ad to use the bot for 16 hours. \n Token generation takes 1-2 minutes. 🎥✨\n Need help? Watch our video tutorial! 📹 \n Facing issues? Contact @i_am_yamraj 📩
-    \n", reply_markup=InlineKeyboardMarkup(btn), protect_content=False, quote=True)
+                await message.reply(f"Your Ads token is expired, refresh your token and try again.\n\nToken Timeout: {get_exp_time(VERIFY_EXPIRE)}\n\nWhat is the token?\n\nThis is an ads token. If you pass 1 ad, you can use the bot for 16 Hour after passing the ad. don,t know how to verify click on video tutorial ", reply_markup=InlineKeyboardMarkup(btn), protect_content=False, quote=True)
 
 
+    
 #=====================================================================================##
 
 WAIT_MSG = """"<b>Processing ...</b>"""
@@ -184,7 +164,8 @@ REPLY_ERROR = """<code>Use this command as a replay to any telegram message with
 
 #=====================================================================================##
 
-
+    
+    
 @Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
     buttons = [
@@ -201,8 +182,8 @@ async def not_joined(client: Client, message: Message):
         buttons.append(
             [
                 InlineKeyboardButton(
-                    text='Try Again',
-                    url=f"https://t.me/{client.username}?start={message.command[1]}"
+                    text = 'Try Again',
+                    url = f"https://t.me/{client.username}?start={message.command[1]}"
                 )
             ]
         )
@@ -210,17 +191,18 @@ async def not_joined(client: Client, message: Message):
         pass
 
     await message.reply(
-        text=FORCE_MSG.format(
-            first=message.from_user.first_name,
-            last=message.from_user.last_name,
-            username=None if not message.from_user.username else '@' + message.from_user.username,
-            mention=message.from_user.mention,
-            id=message.from_user.id
-        ),
-        reply_markup=InlineKeyboardMarkup(buttons),
-        quote=True,
-        disable_web_page_preview=True
+        text = FORCE_MSG.format(
+                first = message.from_user.first_name,
+                last = message.from_user.last_name,
+                username = None if not message.from_user.username else '@' + message.from_user.username,
+                mention = message.from_user.mention,
+                id = message.from_user.id
+            ),
+        reply_markup = InlineKeyboardMarkup(buttons),
+        quote = True,
+        disable_web_page_preview = True
     )
+
 
 
 @Bot.on_message(filters.command('users') & filters.private & filters.user(ADMINS))
@@ -228,7 +210,6 @@ async def get_users(client: Bot, message: Message):
     msg = await client.send_message(chat_id=message.chat.id, text=WAIT_MSG)
     users = await full_userbase()
     await msg.edit(f"{len(users)} users are using this bot")
-
 
 @Bot.on_message(filters.private & filters.command('broadcast') & filters.user(ADMINS))
 async def send_text(client: Bot, message: Message):
@@ -240,7 +221,7 @@ async def send_text(client: Bot, message: Message):
         blocked = 0
         deleted = 0
         unsuccessful = 0
-
+        
         pls_wait = await message.reply("<i>Broadcasting Message.. This will Take Some Time</i>")
         for chat_id in query:
             try:
@@ -260,22 +241,20 @@ async def send_text(client: Bot, message: Message):
                 unsuccessful += 1
                 pass
             total += 1
-
+        
         status = f"""<b><u>Broadcast Completed</u>
 
-    Total Users: <code>{total}</code>
-    Successful: <code>{successful}</code>
-    Blocked Users: <code>{blocked}</code>
-    Deleted Accounts: <code>{deleted}</code>
-    Unsuccessful: <code>{unsuccessful}</code></b>"""
-
+Total Users: <code>{total}</code>
+Successful: <code>{successful}</code>
+Blocked Users: <code>{blocked}</code>
+Deleted Accounts: <code>{deleted}</code>
+Unsuccessful: <code>{unsuccessful}</code></b>"""
+        
         return await pls_wait.edit(status)
 
     else:
         msg = await message.reply(REPLY_ERROR)
         await asyncio.sleep(8)
         await msg.delete()
-
-
 
 
